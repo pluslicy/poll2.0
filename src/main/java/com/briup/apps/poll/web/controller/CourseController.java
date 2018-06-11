@@ -14,6 +14,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,7 +56,7 @@ public class CourseController {
 	}
 	
 	@ApiOperation(value="批量删除课程信息")
-	@GetMapping(value="batchDelete")
+	@PostMapping(value="batchDelete")
 	public MsgResponse batchDelete(@RequestParam long[] ids) {
 		try {
 			courseService.batchDelete(ids);
@@ -66,7 +67,7 @@ public class CourseController {
 	}
 	
 	@ApiOperation(value="保存或更新课程信息，如果参数中id不为空表示更新操作，否则表示保存操作")
-	@GetMapping(value="saveOrUpdate")
+	@PostMapping(value="saveOrUpdate")
 	public MsgResponse saveOrUpdate(@ModelAttribute Course course) {
 		try {
 			courseService.saveOrUpdate(course);

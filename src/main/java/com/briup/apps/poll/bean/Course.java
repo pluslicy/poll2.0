@@ -51,7 +51,7 @@ public class Course {
      *
      * @return the value of poll_course.id
      *
-     * @mbg.generated Sun Jun 10 23:12:26 CST 2018
+     * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
     public Long getId() {
         return id;
@@ -63,7 +63,7 @@ public class Course {
      *
      * @param id the value for poll_course.id
      *
-     * @mbg.generated Sun Jun 10 23:12:26 CST 2018
+     * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
     public void setId(Long id) {
         this.id = id;
@@ -75,7 +75,7 @@ public class Course {
      *
      * @return the value of poll_course.name
      *
-     * @mbg.generated Sun Jun 10 23:12:26 CST 2018
+     * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
     public String getName() {
         return name;
@@ -87,7 +87,7 @@ public class Course {
      *
      * @param name the value for poll_course.name
      *
-     * @mbg.generated Sun Jun 10 23:12:26 CST 2018
+     * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
@@ -99,7 +99,7 @@ public class Course {
      *
      * @return the value of poll_course.period
      *
-     * @mbg.generated Sun Jun 10 23:12:26 CST 2018
+     * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
     public String getPeriod() {
         return period;
@@ -111,7 +111,7 @@ public class Course {
      *
      * @param period the value for poll_course.period
      *
-     * @mbg.generated Sun Jun 10 23:12:26 CST 2018
+     * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
     public void setPeriod(String period) {
         this.period = period == null ? null : period.trim();
@@ -123,7 +123,7 @@ public class Course {
      *
      * @return the value of poll_course.description
      *
-     * @mbg.generated Sun Jun 10 23:12:26 CST 2018
+     * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
     public String getDescription() {
         return description;
@@ -135,7 +135,7 @@ public class Course {
      *
      * @param description the value for poll_course.description
      *
-     * @mbg.generated Sun Jun 10 23:12:26 CST 2018
+     * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();

@@ -8,6 +8,12 @@
 */
 
 package com.briup.apps.poll.service;
+
+import java.util.List;
+
+import com.briup.apps.poll.bean.Clazz;
+import com.briup.apps.poll.vm.ClazzVM;
+
 /**
  * ClassName:IClazzService <br/>
  * Function: TODO ADD FUNCTION. <br/>
@@ -19,6 +25,18 @@ package com.briup.apps.poll.service;
  * @see 	 
  */
 public interface IClazzService {
-
+	List<Clazz> findAll() throws Exception;
+	
+	Clazz findById(long id) throws Exception;
+	
+	ClazzVM findVMById(long id) throws Exception;
+	
+	void saveOrUpdate(Clazz grade) throws Exception;
+	
+	void deleteById(long id) throws Exception;
+	
+	void batchDelete(long[] ids) throws Exception;
+	
+	
 }
 
