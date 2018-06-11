@@ -1,5 +1,9 @@
 package com.briup.apps.poll.bean;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="年级模型")
 public class Grade {
     /**
      *
@@ -8,6 +12,7 @@ public class Grade {
      *
      * @mbg.generated Sun Jun 10 23:12:26 CST 2018
      */
+	@ApiModelProperty(value="年级id")
     private Long id;
 
     /**
@@ -17,6 +22,7 @@ public class Grade {
      *
      * @mbg.generated Sun Jun 10 23:12:26 CST 2018
      */
+	@ApiModelProperty(value="年级名称")
     private String name;
 
     /**
@@ -26,6 +32,7 @@ public class Grade {
      *
      * @mbg.generated Sun Jun 10 23:12:26 CST 2018
      */
+	@ApiModelProperty(value="年级描述")
     private String description;
 
     /**

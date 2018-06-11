@@ -18,7 +18,21 @@ package com.briup.apps.poll.service;
  * @since    JDK 1.6
  * @see 	 
  */
-public interface IGradeService {
 
+import java.util.List;
+
+import com.briup.apps.poll.bean.Grade;
+
+public interface IGradeService {
+	
+	List<Grade> findAll() throws Exception;
+	
+	Grade findById(long id) throws Exception;
+	
+	void saveOrUpdate(Grade grade) throws Exception;
+	
+	void deleteById(long id) throws Exception;
+	
+	void batchDelete(long[] ids) throws Exception;
 }
 

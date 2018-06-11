@@ -21,6 +21,7 @@ import com.briup.apps.poll.bean.School;
 import com.briup.apps.poll.service.ISchoolService;
 import com.briup.apps.poll.util.MsgResponse;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 /**
@@ -33,15 +34,16 @@ import io.swagger.annotations.ApiOperation;
  * @since    JDK 1.6
  * @see 	 
  */
+@Api(description="校园信息相关API")
 @RestController
 @RequestMapping("/school")
 public class SchoolController {
 	@Autowired
 	private ISchoolService schoolService;
 	
-	@ApiOperation(value="查询校园信息", notes="通过id查询校园信息")
+	@ApiOperation(value="查询校园信息", notes="通过id查询校园信息,默认当前学校ID为1")
 	@GetMapping("findById")
-	public MsgResponse find(@RequestParam long id) {
+	public MsgResponse findById(@RequestParam long id) {
 		try {
 			School school = schoolService.findById(id);
 			return MsgResponse.success("success", school);
