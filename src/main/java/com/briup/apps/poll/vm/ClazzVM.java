@@ -19,19 +19,33 @@ package com.briup.apps.poll.vm;
  * @see 	 
  */
 
-import com.briup.apps.poll.bean.Clazz;
 import com.briup.apps.poll.bean.Grade;
 import com.briup.apps.poll.bean.User;
 
+//班级模型
 public class ClazzVM {
-	private Clazz clazz;
-	private Grade grade;	//所属年级
-	private User user;
-	public Clazz getClazz() {
-		return clazz;
+	private Long id;
+	private String name;
+	private String description;
+	private Grade grade;
+	private User charge;
+	public Long getId() {
+		return id;
 	}
-	public void setClazz(Clazz clazz) {
-		this.clazz = clazz;
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public Grade getGrade() {
 		return grade;
@@ -39,11 +53,11 @@ public class ClazzVM {
 	public void setGrade(Grade grade) {
 		this.grade = grade;
 	}
-	public User getUser() {
-		return user;
+	public User getCharge() {
+		return charge;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setCharge(User charge) {
+		this.charge = charge;
 	}
 }
 

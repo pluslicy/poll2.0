@@ -44,6 +44,7 @@ public class ClazzController {
 	@Autowired
 	private IClazzService clazzService;
 	
+	
 	@ApiOperation("通过id删除班级")
 	@GetMapping("deleteById")
 	public MsgResponse deleteById(@RequestParam long id) {
@@ -106,6 +107,18 @@ public class ClazzController {
 	public MsgResponse findAll() {
 		try {
 			List<Clazz> list = clazzService.findAll();
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return MsgResponse.fail(e.getMessage(), null);
+		}
+	}
+	
+	@ApiOperation("查询所有班级模型，级联所属年级，班主任")
+	@GetMapping("findAllVM")
+	public MsgResponse findAllVM() {
+		try {
+			List<ClazzVM> list = clazzService.findAllVM();
 			return MsgResponse.success("success", list);
 		} catch (Exception e) {
 			// TODO: handle exception

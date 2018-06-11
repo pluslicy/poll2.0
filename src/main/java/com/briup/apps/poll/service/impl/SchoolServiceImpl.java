@@ -9,12 +9,17 @@
 
 package com.briup.apps.poll.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.briup.apps.poll.bean.School;
+import com.briup.apps.poll.bean.User;
 import com.briup.apps.poll.dao.SchoolMapper;
+import com.briup.apps.poll.dao.extend.EClazzMapper;
 import com.briup.apps.poll.service.ISchoolService;
+import com.briup.apps.poll.vm.ClazzVM;
 
 /**
  * ClassName:SchoolServiceImpl <br/>
@@ -30,6 +35,7 @@ import com.briup.apps.poll.service.ISchoolService;
 public class SchoolServiceImpl implements ISchoolService {
 	@Autowired
 	private SchoolMapper schoolMapper;
+	
 	
 	@Override
 	public School findById(long id) throws Exception {

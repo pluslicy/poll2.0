@@ -31,6 +31,8 @@ public interface IClazzService {
 	
 	ClazzVM findVMById(long id) throws Exception;
 	
+	List<ClazzVM> findAllVM() throws Exception;
+	
 	void saveOrUpdate(Clazz grade) throws Exception;
 	
 	void deleteById(long id) throws Exception;

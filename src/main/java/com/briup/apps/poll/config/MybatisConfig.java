@@ -4,7 +4,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("com.briup.apps.poll.dao")
+@MapperScan(value= {"com.briup.apps.poll.dao","com.briup.apps.poll.dao.extend"})
 public class MybatisConfig {
 
 }

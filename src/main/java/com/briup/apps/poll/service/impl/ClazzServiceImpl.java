@@ -16,9 +16,8 @@ import org.springframework.stereotype.Service;
 
 import com.briup.apps.poll.bean.Clazz;
 import com.briup.apps.poll.bean.ClazzExample;
-import com.briup.apps.poll.bean.Grade;
 import com.briup.apps.poll.dao.ClazzMapper;
-import com.briup.apps.poll.dao.GradeMapper;
+import com.briup.apps.poll.dao.extend.EClazzMapper;
 import com.briup.apps.poll.service.IClazzService;
 import com.briup.apps.poll.vm.ClazzVM;
 
@@ -37,7 +36,7 @@ public class ClazzServiceImpl implements IClazzService {
 	@Autowired
 	private ClazzMapper clazzMapper;
 	@Autowired
-	private GradeMapper gradeMapper;
+	private EClazzMapper eClazzMapper;
 	
 	@Override
 	public List<Clazz> findAll() throws Exception {
@@ -73,19 +72,12 @@ public class ClazzServiceImpl implements IClazzService {
 
 	@Override
 	public ClazzVM findVMById(long id) throws Exception {
-		Clazz clazz = clazzMapper.selectByPrimaryKey(id);
-		ClazzVM cvm = null;
-		if(clazz!=null) {
-			cvm = new ClazzVM();
-			cvm.setClazz(clazz);
-			//查询班级所关联的年级
-			long gradeId = clazz.getGradeId();
-			Grade grade = gradeMapper.selectByPrimaryKey(gradeId);
-			if(grade !=null) {
-				cvm.setGrade(grade);
-			}
-		}
-		return cvm;
+		return eClazzMapper.findClazzVMById(id);
+	}
+
+	@Override
+	public List<ClazzVM> findAllVM() throws Exception {
+		return eClazzMapper.findAllClazzVM();
 	}
 }
 
