@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.briup.apps.poll.bean.Questionnaire;
 import com.briup.apps.poll.service.IQuestionnaireService;
 import com.briup.apps.poll.util.MsgResponse;
 import com.briup.apps.poll.vm.QuestionnaireVM;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 /**
  * ClassName:QuestionnaireController <br/>
@@ -63,6 +63,20 @@ public class QuestionnaireController {
 			questionnaireService.deleteById(id);
 			return MsgResponse.success("成功删除问卷", null);
 		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.fail(e.getMessage(), null);
+		}
+	}
+	
+
+	@ApiOperation(value="查询所有问卷信息")
+	@GetMapping("findAllQn")
+	public MsgResponse findAllQn() {
+		try {
+			List<Questionnaire> list = questionnaireService.findAll();
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {
+			// TODO: handle exception
 			e.printStackTrace();
 			return MsgResponse.fail(e.getMessage(), null);
 		}

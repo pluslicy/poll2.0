@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.briup.apps.poll.bean.Questionnaire;
 import com.briup.apps.poll.bean.QuestionnaireExample;
 import com.briup.apps.poll.bean.QuestionnaireQuestion;
+import com.briup.apps.poll.bean.QuestionnaireQuestionExample;
 import com.briup.apps.poll.dao.QuestionnaireMapper;
 import com.briup.apps.poll.dao.QuestionnaireQuestionMapper;
 import com.briup.apps.poll.dao.extend.EQuestionnaireMapper;
@@ -71,6 +72,19 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
 		List<QuestionVM> qs = qnVM.getQuestionVMs();
 		if(qn.getId()!=null) {
 			//3.1. 修改操作
+			//3.1.1 更新问卷的基本信息
+			questionnaireMapper.updateByPrimaryKey(qn);
+			//3.1.2 删除该问卷中的桥表信息
+			QuestionnaireQuestionExample qnqExample = new QuestionnaireQuestionExample();
+			qnqExample.createCriteria().andQuestionnaireIdEqualTo(qn.getId());
+			qnqMapper.deleteByExample(qnqExample);
+			//3.1.3 重新舍子问卷中的桥表关系
+			for(QuestionVM q : qs) {
+				QuestionnaireQuestion qnq = new QuestionnaireQuestion();
+				qnq.setQuestionnaireId(qn.getId());
+				qnq.setQuestionId(q.getId());
+				qnqMapper.insert(qnq);
+			}
 		} else {
 			//3.2. 保存操作
 			//3.2.1 保存问卷信息
