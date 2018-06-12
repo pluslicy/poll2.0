@@ -1,5 +1,9 @@
 package com.briup.apps.poll.bean;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="班级信息")
 public class Clazz {
     /**
      *
@@ -8,6 +12,7 @@ public class Clazz {
      *
      * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
+	@ApiModelProperty(value="班级编号")
     private Long id;
 
     /**
@@ -17,6 +22,7 @@ public class Clazz {
      *
      * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
+	@ApiModelProperty(value="班级名称")
     private String name;
 
     /**
@@ -26,6 +32,7 @@ public class Clazz {
      *
      * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
+	@ApiModelProperty(value="班级描述信息")
     private String description;
 
     /**
@@ -44,6 +51,7 @@ public class Clazz {
      *
      * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
+    @ApiModelProperty(value="班级所属年级/部门")
     private Long chargeId;
 
     /**

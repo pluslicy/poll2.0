@@ -1,5 +1,9 @@
 package com.briup.apps.poll.bean;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="用户信息")
 public class User {
     /**
      *
@@ -8,6 +12,7 @@ public class User {
      *
      * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
+	@ApiModelProperty(value="用户编号")
     private Long id;
 
     /**
@@ -17,6 +22,7 @@ public class User {
      *
      * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
+	@ApiModelProperty(value="用户姓名")
     private String name;
 
     /**
@@ -26,6 +32,7 @@ public class User {
      *
      * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
+	@ApiModelProperty(value="用户性别")
     private String gender;
 
     /**
@@ -35,6 +42,7 @@ public class User {
      *
      * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
+	@ApiModelProperty(value="用户出生日期")
     private String birth;
 
     /**
@@ -44,6 +52,7 @@ public class User {
      *
      * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
+	@ApiModelProperty(value="用户入职日期")
     private String hiredate;
 
     /**
@@ -53,6 +62,7 @@ public class User {
      *
      * @mbg.generated Mon Jun 11 11:28:36 CST 2018
      */
+	@ApiModelProperty(value="用户所在年级/部门")
     private Long gradeId;
 
     /**

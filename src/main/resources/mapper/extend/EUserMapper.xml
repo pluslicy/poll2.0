@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.apps.poll.dao.extend.EUserMapper">
+	<!-- 查询所有UserVM -->
+	<select id="findAllUserVM" parameterType="long" resultMap="userVMResultMap">
+		select * from poll_user 
+	</select>
+	<!-- 通过id查询UserVM -->
+	<select id="findUserVMById" parameterType="long" resultMap="userVMResultMap">
+		select * from poll_user where id=#{id}
+	</select>
+	<!-- 通过ID查询Grade -->
+	<select id="findGradeById" resultMap="gradeResultMap" parameterType="long">
+		select * from poll_grade where id=#{id}
+	</select>
+	<!-- userResultMap -->
+	<resultMap id="userVMResultMap" type="com.briup.apps.poll.vm.UserVM">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="gender" jdbcType="VARCHAR" property="gender" />
+		<result column="birth" jdbcType="VARCHAR" property="birth" />
+		<result column="hiredate" jdbcType="VARCHAR" property="hiredate" />
+		<association property="grade" column="grade_id" select="findGradeById"></association>
+	</resultMap>
+	
+	<!-- gradeResultMap -->
+	<resultMap id="gradeResultMap" type="com.briup.apps.poll.bean.Grade">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+	</resultMap>
+	
+</mapper>
