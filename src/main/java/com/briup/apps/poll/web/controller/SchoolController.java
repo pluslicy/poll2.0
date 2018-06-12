@@ -58,10 +58,10 @@ public class SchoolController {
 	public MsgResponse saveOrUpdate(@ModelAttribute School school) {
 		try {
 			schoolService.saveOrUpdate(school);
-			return MsgResponse.success("success", null);
+			return MsgResponse.success("校园信息更新成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return MsgResponse.fail("error", null);
+			return MsgResponse.fail(e.getMessage(), null);
 		}
 	}
 }

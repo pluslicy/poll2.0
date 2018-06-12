@@ -24,6 +24,8 @@ import java.util.List;
 import com.briup.apps.poll.vm.QuestionVM;
 
 public interface IQuestionService {
+	List<QuestionVM> queryVM(String keywords) throws Exception;
+	
 	List<QuestionVM> findAllVM() throws Exception;
 	
 	void deleteById(long id) throws Exception;

@@ -37,7 +37,7 @@ import io.swagger.annotations.ApiOperation;
  * @since    JDK 1.6
  * @see 	 
  */
-@Api(description="用户相关接口")
+@Api(description="用户相关API")
 @RestController
 @RequestMapping("/user")
 public class UserController {

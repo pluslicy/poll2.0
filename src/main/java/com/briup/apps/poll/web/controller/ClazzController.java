@@ -37,7 +37,7 @@ import io.swagger.annotations.ApiOperation;
  * @since    JDK 1.6
  * @see 	 
  */
-@Api( description="班级相关接口")
+@Api( description="班级相关API")
 @RestController
 @RequestMapping("/clazz")
 public class ClazzController {

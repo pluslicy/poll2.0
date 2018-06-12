@@ -46,6 +46,8 @@ public class QustionController {
 	@Autowired
 	private IQuestionService questionService;
 	
+	
+	
 	@ApiOperation(value="根据ID删除题目信息")
 	@GetMapping(value="deleteById")
 	public MsgResponse deleteById(@RequestParam long id) {
@@ -70,7 +72,7 @@ public class QustionController {
 		}
 	}
 	
-	@ApiOperation(value="保存或更新题目信息,暂未完善")
+	@ApiOperation(value="保存或更新题目信息")
 	@PostMapping(value="saveOrUpdate")
 	public MsgResponse saveOrUpdate(@ModelAttribute QuestionVM questionVM) {
 		try {
@@ -105,6 +107,19 @@ public class QustionController {
 	public MsgResponse findAllVM() {
 		try {
 			List<QuestionVM> list = questionService.findAllVM();
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return MsgResponse.fail(e.getMessage(), null);
+		}
+	}
+	
+	@ApiOperation(value="模糊查询题目信息")
+	@GetMapping(value="queryVM")
+	public MsgResponse queryVM(@RequestParam String keywords) {
+		try {
+			List<QuestionVM> list = questionService.queryVM(keywords);
 			return MsgResponse.success("success", list);
 		} catch (Exception e) {
 			// TODO: handle exception

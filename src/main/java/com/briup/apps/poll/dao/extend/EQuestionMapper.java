@@ -25,5 +25,7 @@ import com.briup.apps.poll.vm.QuestionVM;
 
 public interface EQuestionMapper {
 	List<QuestionVM> findAllQuestionVM();
+	
+	List<QuestionVM> queryQuestionVM(String keywords);
 }
 

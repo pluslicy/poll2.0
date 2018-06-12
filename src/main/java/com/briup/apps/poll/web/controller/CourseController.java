@@ -36,7 +36,7 @@ import io.swagger.annotations.ApiOperation;
  * @since    JDK 1.6
  * @see 	 
  */
-@Api(description="课程相关API接口")
+@Api(description="课程相关API")
 @RestController
 @RequestMapping("/course")
 public class CourseController {

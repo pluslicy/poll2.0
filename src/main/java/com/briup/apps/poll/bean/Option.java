@@ -174,4 +174,10 @@ public class Option {
     public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
+
+	@Override
+	public String toString() {
+		return "Option [id=" + id + ", label=" + label + ", content=" + content + ", score=" + score + ", questionId="
+				+ questionId + "]";
+	}
 }
