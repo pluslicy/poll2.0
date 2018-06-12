@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.apps.poll.dao.extend.EQuestionnaireMapper">
+	<!-- 通过问卷id查找问卷下的所有问题 vm -->
+	<select id="findQuestionnaireVMById" parameterType="long"
+		resultMap="questionnaireVMResultMap">
+		select * from poll_questionnaire where id = #{id}
+	</select>
+	
+	<!-- 通过问题id查询QuestionVM -->
+	<select id="findQuestionVMByQnId" parameterType="long"
+		resultMap="questionVMResultMap">
+		select * from poll_question where id in (
+			select question_id from poll_questionnaire_question where questionnaire_id = #{id}
+		)
+	</select>
+	<!-- 通过问题id查询问题下所有的选项 -->
+	<select id="findOptionByQuestionId" resultMap="optionResultMap"
+		parameterType="long">
+		select * from poll_option where question_id=#{id}
+	</select>
+
+	<!-- 问卷结果集 questionnaireResultMap-->
+	<resultMap id="questionnaireResultMap" type="com.briup.apps.poll.bean.Questionnaire">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="createDate" jdbcType="VARCHAR" property="createdate" />
+	</resultMap>
+	<!--问卷模型结果集 questionnaireVMResultMap -->
+	<resultMap type="com.briup.apps.poll.vm.QuestionnaireVM" id="questionnaireVMResultMap" extends="questionnaireResultMap">
+		<!-- 
+		<association property="questionnaire" column="questionnare_id"
+			select="findQuestionnaireById"></association>-->
+		<collection property="questionVMs" javaType="ArrayList"
+			ofType="com.briup.apps.poll.vm.QuestionVM" column="id"
+			select="findQuestionVMByQnId"> 
+		</collection>
+		
+	</resultMap>
+	
+	<!-- 问题模型结果集 questionVMResultMap -->
+	<resultMap id="questionVMResultMap" type="com.briup.apps.poll.vm.QuestionVM">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="no" jdbcType="INTEGER" property="no" />
+		<result column="questionTypeId" jdbcType="BIGINT" property="questiontypeid" />
+		<result column="questionTypeLabel" jdbcType="VARCHAR" property="questiontypelabel" />
+		<collection property="options" javaType="ArrayList"
+			ofType="com.briup.apps.poll.bean.Option" column="id"
+			select="findOptionByQuestionId">
+		</collection>
+	</resultMap>
+
+	<!-- 问题选项结果集 gradeResultMap -->
+	<resultMap id="optionResultMap" type="com.briup.apps.poll.bean.Option">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="label" jdbcType="VARCHAR" property="label" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+		<result column="score" jdbcType="INTEGER" property="score" />
+		<result column="question_id" jdbcType="BIGINT" property="questionId" />
+	</resultMap>
+
+</mapper>
