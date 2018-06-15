@@ -6,21 +6,29 @@
 		select * from poll_question
 		<where>
 			<if test="_parameter!=null">
-				title LIKE "%"#{_parameter}"%" OR questionTypeLabel like "%"#{_parameter}"%"
+				title LIKE "%"#{_parameter}"%" OR questionTypeLabel like
+				"%"#{_parameter}"%"
 			</if>
 		</where>
 	</select>
 	<!-- 查询所有UserVM -->
 	<select id="findAllQuestionVM" resultMap="questionVMResultMap">
-		select * from poll_question 
+		select * from
+		poll_question
 	</select>
 	<!-- 通过id查询UserVM -->
-	<select id="findQuestionVMById" parameterType="long" resultMap="questionVMResultMap">
+	<select id="findQuestionVMById" parameterType="long"
+		resultMap="questionVMResultMap">
 		select * from poll_question where id=#{id}
 	</select>
 	<!-- 通过ID查询Grade -->
-	<select id="findOptionByQuestionId" resultMap="optionResultMap" parameterType="long">
+	<select id="findOptionByQuestionId" resultMap="optionResultMap"
+		parameterType="long">
 		select * from poll_option where question_id=#{id}
+	</select>
+	<!-- 通过ID查询课程 -->
+	<select id="findCourseById" resultMap="courseResultMap" parameterType="long">
+		select * from poll_course where id=#{id}
 	</select>
 	<!-- userResultMap -->
 	<resultMap id="questionVMResultMap" type="com.briup.apps.poll.vm.QuestionVM">
@@ -28,22 +36,28 @@
 		<result column="title" jdbcType="VARCHAR" property="title" />
 		<result column="no" jdbcType="INTEGER" property="no" />
 		<result column="questionTypeId" jdbcType="BIGINT" property="questiontypeid" />
-    		<result column="questionTypeLabel" jdbcType="VARCHAR" property="questiontypelabel" />
-		<collection property="options" 
-			javaType="ArrayList"
-			ofType="com.briup.apps.poll.bean.Option" 
-			column="id" 
+		<result column="questionTypeLabel" jdbcType="VARCHAR" property="questiontypelabel" />
+		<association property="course" column="course_id" select="findCourseById"></association>
+		<collection property="options" javaType="ArrayList"
+			ofType="com.briup.apps.poll.bean.Option" column="id"
 			select="findOptionByQuestionId">
 		</collection>
 	</resultMap>
-	
+	<!-- courseResultMap -->
+	<resultMap id="courseResultMap" type="com.briup.apps.poll.bean.Course">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="period" jdbcType="VARCHAR" property="period" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+	</resultMap>
+
 	<!-- gradeResultMap -->
 	<resultMap id="optionResultMap" type="com.briup.apps.poll.bean.Option">
 		<id column="id" jdbcType="BIGINT" property="id" />
-	    <result column="label" jdbcType="VARCHAR" property="label" />
-	    <result column="content" jdbcType="VARCHAR" property="content" />
-	    <result column="score" jdbcType="INTEGER" property="score" />
-	    <result column="question_id" jdbcType="BIGINT" property="questionId" />
+		<result column="label" jdbcType="VARCHAR" property="label" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+		<result column="score" jdbcType="INTEGER" property="score" />
+		<result column="question_id" jdbcType="BIGINT" property="questionId" />
 	</resultMap>
-	
+
 </mapper>

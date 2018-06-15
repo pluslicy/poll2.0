@@ -21,14 +21,33 @@ package com.briup.apps.poll.vm;
 
 import java.util.List;
 
+import com.briup.apps.poll.bean.Course;
 import com.briup.apps.poll.bean.Option;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 // 问题模型，级联选项
+@ApiModel(description="问题模型")
 public class QuestionVM {
+	@ApiModelProperty(value="问题编号")
 	private Long id;
+	
+	@ApiModelProperty(value="问题标题",required=true)
 	private String title;
+	
+	@ApiModelProperty(value="问题序号")
 	private Integer no;
+	
+	@ApiModelProperty(value="问题类型编号",required=true)
 	private Long questiontypeid;
+	
+	@ApiModelProperty(value="问题类型名称",required=true)
 	private String questiontypelabel;
+	
+	@ApiModelProperty(value="问题所属题目")
+	private Course course;
+	
+	@ApiModelProperty(value="问题选项")
 	private List<Option> options;
 	
 	public Long getId() {
@@ -66,6 +85,12 @@ public class QuestionVM {
 	}
 	public void setQuestiontypelabel(String questiontypelabel) {
 		this.questiontypelabel = questiontypelabel;
+	}
+	public Course getCourse() {
+		return course;
+	}
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 }
 

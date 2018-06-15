@@ -29,7 +29,7 @@ public class MsgResponse {
 	public static MsgResponse success(String message, Object data) {
 		MsgResponse msg = new MsgResponse();
 		msg.setStatus(200);
-		msg.setMessage("success");
+		msg.setMessage(message);
 		msg.setData(data);
 		return msg;
 	}

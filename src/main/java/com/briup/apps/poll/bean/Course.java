@@ -12,7 +12,7 @@ public class Course {
      *
      * @mbg.generated Sun Jun 10 23:12:26 CST 2018
      */
-	@ApiModelProperty("编号")
+	@ApiModelProperty(value="编号")
     private Long id;
 
     /**

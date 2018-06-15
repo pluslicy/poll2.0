@@ -22,7 +22,7 @@ public class Option {
      *
      * @mbg.generated Tue Jun 12 10:15:00 CST 2018
      */
-	@ApiModelProperty(value="题目选项标记")
+	@ApiModelProperty(value="题目选项标记",required=true)
     private String label;
 
     /**
@@ -32,7 +32,7 @@ public class Option {
      *
      * @mbg.generated Tue Jun 12 10:15:00 CST 2018
      */
-	@ApiModelProperty(value="题目选项内容")
+	@ApiModelProperty(value="题目选项内容",required=true)
     private String content;
 
     /**
@@ -42,7 +42,7 @@ public class Option {
      *
      * @mbg.generated Tue Jun 12 10:15:00 CST 2018
      */
-	@ApiModelProperty(value="题目选项分数")
+	@ApiModelProperty(value="题目选项分数",required=true)
     private Integer score;
 
     /**

@@ -53,7 +53,7 @@ public class QustionController {
 	public MsgResponse deleteById(@RequestParam long id) {
 		try {
 			questionService.deleteById(id);
-			return MsgResponse.success("success", null);
+			return MsgResponse.success("删除成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.fail(e.getMessage(), null);
@@ -65,19 +65,19 @@ public class QustionController {
 	public MsgResponse batchDelete(@RequestParam long[] ids) {
 		try {
 			questionService.batchDelete(ids);
-			return MsgResponse.success("success", null);
+			return MsgResponse.success("批量删除成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.fail(e.getMessage(), null);
 		}
 	}
 	
-	@ApiOperation(value="保存或更新题目信息")
+	@ApiOperation(value="保存或更新题目信息",notes="当题目id为空的时候表示保存该题目，如果题目id非空表示修改该题目相关信息。题目所属课程中course.id必须提交，课程id为空即可")
 	@PostMapping(value="saveOrUpdate")
 	public MsgResponse saveOrUpdate(@ModelAttribute QuestionVM questionVM) {
 		try {
 			questionService.saveOrUpdateVM(questionVM);
-			return MsgResponse.success("success", null);
+			return MsgResponse.success("保存或更新成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.fail(e.getMessage(), null);

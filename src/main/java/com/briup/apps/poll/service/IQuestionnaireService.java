@@ -36,6 +36,11 @@ public interface IQuestionnaireService {
 	QuestionnaireVM findVMById(long id) throws Exception;
 	
 	/**
+	 * 批量删除问卷信息
+	 * */
+	void batchDelete(long[] ids) throws Exception;
+	
+	/**
 	 * 通过id删除问卷
 	 * */
 	void deleteById(long id) throws Exception;

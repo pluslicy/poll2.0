@@ -60,8 +60,10 @@ public class QuestionServiceImpl implements IQuestionService {
 		question.setNo(questionVM.getNo());
 		question.setQuestiontypeid(questionVM.getQuestiontypeid());
 		question.setQuestiontypelabel(questionVM.getQuestiontypelabel());
-		// 题目关联的选项对象
-		List<Option> options = questionVM.getOptions();
+		if(questionVM.getCourse()!=null) {
+			question.setCourseId(questionVM.getCourse().getId());
+		}
+	
 		if(questionVM.getId()!=null) {
 			//修改操作
 			//1. 修改题干信息
@@ -71,18 +73,28 @@ public class QuestionServiceImpl implements IQuestionService {
 			oe.createCriteria().andQuestionIdEqualTo(question.getId());
 			optionMapper.deleteByExample(oe);
 			//3. 插入新来的题干信息
-			for(Option option : options) {
-				option.setId(null);
-				optionMapper.insert(option);
+			//如果不为简答题的时候无需插入选项
+			if(question.getQuestiontypeid() != 3) {
+				// 题目关联的选项对象
+				List<Option> options = questionVM.getOptions();
+				for(Option option : options) {
+					option.setId(null);
+					optionMapper.insert(option);
+				}
 			}
+			
 		} else {
 			//保存操作
 			//1.插入题干信息，需要在mapper中设定，返回id <insert id="insert" parameterType="com.briup.apps.poll.bean.Question" useGeneratedKeys="true" keyProperty="id">
 			questionMapper.insert(question);
 			//2.插入选项信息
-			for(Option option : options) {
-				option.setQuestionId(question.getId());
-				optionMapper.insert(option);
+			if(question.getQuestiontypeid() != 3) {
+				// 题目关联的选项对象
+				List<Option> options = questionVM.getOptions();
+				for(Option option : options) {
+					option.setQuestionId(question.getId());
+					optionMapper.insert(option);
+				}
 			}
 		}
 	}

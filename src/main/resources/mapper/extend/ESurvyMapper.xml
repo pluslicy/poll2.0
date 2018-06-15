@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.apps.poll.dao.extend.ESurvyMapper">
+	<!-- 查询所有问卷模型 -->
+	<select id="findAllSurvyVM" parameterType="long"
+		resultMap="survyVMResultMap">
+		select * from poll_survy
+	</select>
+
+	<!-- 课调结果集survyVMResultMap -->
+	<resultMap id="survyVMResultMap" type="com.briup.apps.poll.vm.SurvyVM">
+		<id column="id" jdbcType="BIGINT" property="id" />
+	    <result column="survyDate" jdbcType="VARCHAR" property="survydate" />
+	    <result column="state" jdbcType="VARCHAR" property="state" />
+	    <result column="code" jdbcType="VARCHAR" property="code" />
+	    <association property="grade" column="grade_id" select="com.briup.apps.poll.dao.GradeMapper.selectByPrimaryKey"></association>
+	    <association property="clazz" column="clazz_id" select="com.briup.apps.poll.dao.ClazzMapper.selectByPrimaryKey"></association>
+	    <association property="course" column="course_id" select="com.briup.apps.poll.dao.CourseMapper.selectByPrimaryKey"></association>
+	    <association property="teacher" column="teacher_id" select="com.briup.apps.poll.dao.UserMapper.selectByPrimaryKey"></association>
+	    <association property="questionnaireVM" column="questionnaire_id" select="com.briup.apps.poll.dao.extend.EQuestionnaireMapper.findQuestionnaireVMById"></association>
+	</resultMap>
+</mapper>

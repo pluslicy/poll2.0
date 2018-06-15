@@ -99,6 +99,13 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
 		}
 		
 	}
+
+	@Override
+	public void batchDelete(long[] ids) throws Exception {
+		for(long id : ids) {
+			questionnaireMapper.deleteByPrimaryKey(id);
+		}
+	}
 	
 	
 }

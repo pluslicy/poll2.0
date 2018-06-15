@@ -56,6 +56,17 @@ public class QuestionnaireController {
 		}
 	}
 	
+	@ApiOperation(value="批量删除问卷信息")
+	@PostMapping(value="batchDelete")
+	public MsgResponse batchDelete(@RequestParam long[] ids) {
+		try {
+			questionnaireService.batchDelete(ids);
+			return MsgResponse.success("批量删除成功", null);
+		} catch (Exception e) {
+			return MsgResponse.fail(e.getMessage(), null);
+		}
+	}
+	
 	@ApiOperation(value="通过id查询删除问卷")
 	@GetMapping("deleteQnById")
 	public MsgResponse deleteQnById(@RequestParam long id) {
